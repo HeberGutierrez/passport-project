@@ -22,7 +22,7 @@ mongoose.connect(configDB.url); //connect to our database
 
 //set up our express application
 app.use(morgan('dev')); // log every request to the console
-app.use(cookeParser()); //read cookies (needed for auth)
+app.use(cookieParser()); //read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 
 app.set('view engine', 'ejs'); // set up ejs for templating
