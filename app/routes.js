@@ -7,6 +7,12 @@ module.exports = function(app, passport) {
     res.render('index.ejs'); // load the index.ejs file
   });
 
+  // route for login form
+  // route for processing the login forms
+  // route for signup form
+  // route for processing the signup form
+
+
   // =======================================
   //LOGIN===================================
   //========================================
@@ -48,6 +54,24 @@ module.exports = function(app, passport) {
       user: req.user // get the user out of session and pass to template
     });
   });
+
+  //============================================
+  // FACEBOOK ROUTES ===========================
+  // ===========================================
+  // route for facebook authentication and login
+  app.get('/auth/facebook', passport.authenticate('facebook', {
+    scope: ['public_profile', 'email']
+  }));
+
+  // handle the callback after facebook has authenticated the user
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      successRedirect: '/profile',
+      failureRedirect: '/'
+    }));
+
+
+
 
   //==========================================
   // LOGOUT ==================================
